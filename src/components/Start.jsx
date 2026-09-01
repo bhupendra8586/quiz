@@ -8,9 +8,12 @@ import { QuizContext, QuizProvider } from '../context/QuizContext';
 const Start = () => {
 
     const [quenumber, SetQuenumber] = useState(0);
-    const { selectedAns, SetselectedAns } = useContext(QuizContext);
-    const [solve, setSolve] = useState(0);
-    const { score, setScore } = useContext(QuizContext);
+    const { selectedAns, SetselectedAns,
+            solve, setSolve,
+            score, setScore,
+            correct, setCorrect,
+            incorrect, setIncorrect
+          } = useContext(QuizContext);
 
     const navigate = useNavigate();
 
@@ -37,15 +40,18 @@ const Start = () => {
 
         if (opt === questions[quenumber].correctAnswer) {
             console.log("Correct");
+            setCorrect(prev => prev + 1);
             setSolve(prev => prev + 1);
             setScore(prev => prev + 20);
             console.log(score);
         } else {
             console.log("Incorrect");
+            setIncorrect(prev => prev + 1);
+            
             setSolve(prev => prev + 1);
         }
         
-    console.log("cisub: ",SetselectedAns);
+    console.log("cisub: ",selectedAns);
     }
 
     const handleSubmit = () => {

@@ -7,9 +7,17 @@ const QuizProvider = ({children}) => {
     
     const [score, setScore] = useState(0);
     const [selectedAns, SetselectedAns] = useState([]);
+    const [solve, setSolve] = useState(0);
+    const [correct, setCorrect] = useState(0);
+    const [incorrect, setIncorrect] = useState(0);
 
     return(
-        <QuizContext.Provider value={{ score, setScore, selectedAns, SetselectedAns }}>
+        <QuizContext.Provider value={{ score, setScore,
+                                       selectedAns, SetselectedAns,
+                                       solve, setSolve,
+                                       correct, setCorrect,
+                                       incorrect, setIncorrect
+                                    }}>
             {children}
         </QuizContext.Provider>
     )
